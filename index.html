@@ -282,9 +282,10 @@
         <h1 class="titulo-atracao"></h1>
     </section>
 
-    <script>
+  <script>
     const items = document.querySelectorAll('.item');
     const titulo = document.querySelector('.titulo-atracao');
+    const carrossel = document.querySelector('.carrossel');
 
     let index = 0;
 
@@ -305,6 +306,17 @@
         });
     }
 
+    function nextSlide() {
+        index = (index + 1) % items.length;
+        updateCarousel();
+    }
+
+    function prevSlide() {
+        index = (index - 1 + items.length) % items.length;
+        updateCarousel();
+    }
+
+    // Clique (desktop)
     items.forEach((item, i) => {
         item.addEventListener('click', () => {
             index = i;
@@ -312,9 +324,47 @@
         });
     });
 
+    // ==========================
+    // SWIPE (mobile e tablet)
+    // ==========================
+
+    let startX = 0;
+    let endX = 0;
+
+    function handleGesture() {
+        const threshold = 50;
+
+        if (startX - endX > threshold) {
+            nextSlide();
+        }
+
+        if (endX - startX > threshold) {
+            prevSlide();
+        }
+    }
+
+    function enableTouch() {
+        carrossel.addEventListener('touchstart', (e) => {
+            startX = e.changedTouches[0].screenX;
+        });
+
+        carrossel.addEventListener('touchend', (e) => {
+            endX = e.changedTouches[0].screenX;
+            handleGesture();
+        });
+    }
+
+    function checkScreen() {
+        if (window.innerWidth <= 1024) {
+            enableTouch();
+        }
+    }
+
+    checkScreen();
+    window.addEventListener('resize', checkScreen);
+
     updateCarousel();
-    </script>
-    
+  </script>
   
    
  
