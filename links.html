@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <title>Jump Indoor Park</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="icon" href="./imglinks/logo.jpg" type="image/x-icon">
+
+
+
+  <style>
+
+
+  /* Estilos do modal */
+  .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+      
+    }
+    .modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 5px;
+      text-align: center;
+      width: 300px;
+      background-image: url(./imglinks/bg-links---Jump-Indoor1.png);
+    }
+
+    .modal-content h2 {
+      color: #ffffff;
+      font-weight: 900;
+    }
+    .modal-content button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 5px;
+    }
+    .btn-maraba { background: linear-gradient(90deg, #9cc462, #ec881b, #eb65a4, #3dafe5); color: white;  box-shadow: 8px 10px 8px rgba(0, 0, 0); }
+    .btn-gurupi { background: linear-gradient(90deg, #9cc462, #ec881b, #eb65a4, #3dafe5); color: white;  box-shadow: 8px 10px 8px rgba(0, 0, 0); }
+    .btn-aparecida { background: linear-gradient(90deg, #9cc462, #ec881b, #eb65a4, #3dafe5); color: white;  box-shadow: 8px 10px 8px rgba(0, 0, 0); }
+    .btn-fechar { background: #dc3545; color: white; }
+
+    .btn-maraba:hover, 
+    .btn-gurupi:hover,
+    .btn-aparecida:hover
+    {
+      background-color: #1f1629;
+    }
+
+    /* Estilos específicos para o modal de programações */
+    .modal-programacoes-content {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 40px 30px;
+      border-radius: 20px;
+      text-align: center;
+      width: 400px;
+      max-width: 90vw;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .modal-programacoes-content::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, 
+        rgba(255, 255, 255, 0.1) 0%, 
+        rgba(255, 255, 255, 0.05) 50%, 
+        rgba(255, 255, 255, 0.1) 100%);
+      pointer-events: none;
+    }
+
+    .modal-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      animation: pulse 2s infinite;
+    }
+
+    .modal-title {
+      color: #ffffff;
+      font-weight: 900;
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      line-height: 1.3;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .modal-text {
+      color: #ffffff;
+      margin: 20px 0 30px 0;
+      font-size: 1rem;
+      line-height: 1.5;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+      opacity: 0.95;
+    }
+
+    .btn-fechar-modal {
+      background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 25px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(238, 90, 82, 0.4);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .btn-fechar-modal:hover {
+      background: linear-gradient(135deg, #ff5252, #d32f2f);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(238, 90, 82, 0.6);
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    /* Responsividade para o modal de programações */
+    @media (max-width: 768px) {
+      .modal-programacoes-content {
+        width: 350px;
+        padding: 30px 20px;
+      }
+      
+      .modal-title {
+        font-size: 1.2rem;
+      }
+      
+      .modal-text {
+        font-size: 0.9rem;
+      }
+      
+      .modal-icon {
+        font-size: 2.5rem;
+      }
+    }
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-image: url(./imglinks/bg-links---Jump-Indoor2.png);
+
+  background-size: 110% 110%; /* Faz a transição entre cores mais ampla */
+  animation: gradientAnimation 60s ease-in-out infinite; /* Movimento mais lento e fluido */
+  color: #232422; /* Texto em cinza-escuro para contraste */
+  margin: 0;
+  padding: 0;
+  min-height: 100vh; /* Garante que o fundo cubra toda a página */
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Centraliza o conteúdo */
+}
+
+/* Quando a tela for menor que 768px (celulares), muda o fundo */
+@media (max-width: 768px) {
+  body {
+    background-image: url(./imglinks/bg-links---Jump-Indoor1.png);
+    background-size: cover; /* Ajusta melhor para telas pequenas */
+    height: 900px;
+    
+    animation: gradientAnimation 30s ease-in-out infinite; 
+  }
+}
+/* Animação do gradiente */
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 25%; } /* Posição intermediária com mais variação */
+  100% { background-position: 0% 50%; }
+}
+
+/* Estilo para o conteúdo */
+h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #fcfcfc; /* Branco puro */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Destaque para o texto */
+}
+
+    .container-geral {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+      justify-content: center;
+     
+    }
+
+    .container-btn {
+     
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 65%;
+    }
+
+    .logo-container {
+      border-radius: 50%;
+      width: 140px;
+      height: 140px;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 2rem;
+      box-shadow: 8px 10px 8px rgba(0, 0, 0);
+
+    }
+
+    .logo-container img{
+      border-radius: 50%;
+      width: 100%;
+      height: 100%;
+   
+    }
+
+
+    .btn-links {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(90deg, #9dc46279, #ec871b91, #eb65a49c, #3db0e591);
+      color: #ffffff;
+      font-size: 0.75rem;
+      width: 450px;
+      margin: 0.7rem;
+      padding: 0.8rem 1rem;
+      border: 2px solid #000000;
+      border-radius: 0.5rem;
+      box-shadow: 8px 10px 8px rgba(0, 0, 0);
+      text-transform:uppercase;
+      text-decoration: none;
+      font-weight: 600;
+    
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-links img {
+      width: 30px;
+      height: 30px;
+      margin-right: 1rem;
+    }
+
+    .btn-links:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      background-color: #1f1629;
+      color: rgb(255, 255, 255);
+      border: 2px solid #d7e2e6;
+    }
+
+    .btn-compartilhar {
+      background-color: transparent;
+      border: none;
+      color: #555;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+
+    .btn-compartilhar:hover {
+      color: #000;
+    }
+
+    .btn-links:hover img{
+     transform:scale(1.3);
+    }
+
+    .section-title {
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .btn-links {
+        font-size: 0.8rem;
+        width: 350px;
+      }
+
+      .btn-links img {
+        width: 30px;
+        height: 30px;
+      }
+
+      .container-btn {
+    
+      width: 90%;
+    }
+    }
+  </style>
+
+</head>
+
+
+<body>
+
+  <div class="container-geral">
+    <div class="logo-container">
+      <img src="./imglinks/Destaques-e-perfil---jumpperfil.webp" alt="Jump Indoor Park">
+      
+    </div>
+    
+    <!--<div class="container-btn">-->
+      <!-- Botão para programações do mês -->
+      <!--<a href="banner-natal-story.png." target="_blank" class="btn-links">
+        <img style="border-radius: 100%;" src="./imglinks/Destaques-e-perfil---jumpperfil.webp" alt="Programações"> Programação de Dezembro
+        <button class="btn-compartilhar">.</button>
+      </a>
+      -->
+
+
+      <!-- Botões para checkout de cada unidade -->
+      <a href="https://jumpindoor.tikt.com.br/compra_ingresso_online_new/?filial=001" target="_blank" class="btn-links">
+        <img style="border-radius: 100%;" src="./imglinks/Destaques-e-perfil---jumpperfil.webp" alt="Marabá"> Unidade de Marabá
+        <button class="btn-compartilhar">.</button>
+      </a>
+
+      <a href="https://jumpindoor.tikt.com.br/compra_ingresso_online_new/?filial=002" target="_blank" class="btn-links">
+        <img style="border-radius: 100%;" src="./imglinks/Destaques-e-perfil---jumpperfil.webp" alt="Gurupi"> Unidade de Gurupi
+        <button class="btn-compartilhar">.</button>
+      </a>
+
+      <a href="https://jumpindoor.tikt.com.br/compra_ingresso_online_new/?filial=003" target="_blank" class="btn-links">
+        <img style="border-radius: 100%;" src="./imglinks/Destaques-e-perfil---jumpperfil.webp" alt="Aparecida"> Unidade de Aparecida de Goiânia
+        <button class="btn-compartilhar">.</button>
+      </a>
+
+      <!-- Botão para conversas/festas/excursões -->
+      <a href="#" class="btn-links" onclick="abrirModal('contato')">
+        <img src="./imglinks/whatsapp.png" alt="Contato"> Converse/Festas/Excursões
+        <button class="btn-compartilhar">.</button>
+      </a>
+
+  
+
+      <!-- Botão para o site (movido para baixo) -->
+      <a href="https://jumpindoorpark.com.br" target="_blank" class="btn-links">
+        <img style="border-radius: 100%;" src="./imglinks/Destaques-e-perfil---jumpperfil.webp" alt="Site"> Nosso Site
+        <button class="btn-compartilhar">.</button>
+      </a>
+    </div>
+  </div>
+
+  <!-- Modal Programações -->
+  <div id="modal-programacoes" class="modal">
+    <div class="modal-programacoes-content">
+      <div class="modal-icon">📅</div>
+      <h2 class="modal-title">EM BREVE TEREMOS AS PROGRAMAÇÕES</h2>
+      <p class="modal-text">Estamos preparando uma programação incrível para você!<br>Fique ligado nas nossas redes sociais.</p>
+      <button class="btn-fechar-modal" onclick="fecharModal()">Fechar</button>
+    </div>
+  </div>
+
+  <!-- Modal Contato/Festas/Excursões -->
+  <div id="modal-contato" class="modal">
+    <div class="modal-content">
+      <h2>Escolha a unidade</h2>
+      <button class="btn-maraba text-uppercase" onclick="redirecionar('contato', 'maraba')">Marabá</button>
+      <button class="btn-gurupi text-uppercase" onclick="redirecionar('contato', 'gurupi')">Gurupi</button>
+      <button class="btn-aparecida text-uppercase" onclick="redirecionar('contato', 'aparecida')">Aparecida de Goiânia</button>
+    </div>
+  </div>
+
+  <!-- Modal Endereço -->
+  <div id="modal-endereco" class="modal">
+    <div class="modal-content">
+      <h2>Escolha a unidade</h2>
+      <button class="btn-maraba text-uppercase" onclick="redirecionar('endereco', 'maraba')">Marabá</button>
+      <button class="btn-gurupi text-uppercase" onclick="redirecionar('endereco', 'gurupi')">Gurupi</button>
+      <button class="btn-aparecida text-uppercase" onclick="redirecionar('endereco', 'aparecida')">Aparecida de Goiânia</button>
+    </div>
+  </div>
+
+  <script>
+    function abrirModal(tipo) {
+      const modal = document.getElementById(`modal-${tipo}`);
+      modal.style.display = "flex";
+  
+      // Adiciona um evento para fechar ao clicar fora do conteúdo
+      modal.addEventListener("click", function (event) {
+        if (event.target === modal) {
+          fecharModal();
+        }
+      });
+    }
+
+  
+    function fecharModal() {
+      document.querySelectorAll(".modal").forEach((modal) => {
+        modal.style.display = "none";
+      });
+    }
+  
+    function redirecionar(tipo, unidade) {
+      let urls = {
+        contato: {
+          maraba: "https://api.whatsapp.com/send?phone=94984022691",
+          gurupi: "https://api.whatsapp.com/send?phone=94984026621",
+          aparecida: "https://wa.me/message/TCDQK7E6HH7JF1",
+        },
+        endereco: {
+          maraba: "https://maps.app.goo.gl/enderecoMaraba", // Você precisará fornecer o link correto
+          gurupi: "https://maps.app.goo.gl/N3VT1knFX6tpc1UUA",
+          aparecida: "https://maps.app.goo.gl/enderecoAparecida", // Você precisará fornecer o link correto
+        },
+      };
+  
+      window.open(urls[tipo][unidade], "_blank");
+      fecharModal();
+    }
+  </script>
+  
+
+</body>
+
+</html>
