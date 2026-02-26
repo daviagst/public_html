@@ -76,87 +76,37 @@
     <!--==================================================-->
     <!-- Start  Main Menu Area -->
     <!--==================================================-->
-    <div id="sticky-header" class="_nav_manu upper">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-lg-2">
-            <div class="logo p-2">
-              <a class="logo_img" href="index.html" title="">
-                <img
-                  src="assets/images/ImagensJUMP/logo JUMP INDOOR 2.png"
-                  width="160px"
-                  alt=""
-                />
-              </a>
-              <a class="main_sticky" href="index.html" title="">
-                <img
-                  src="assets/images/ImagensJUMP/logo JUMP INDOOR 2.png"
-                  alt=""
-                />
-              </a>
-            </div>
-          </div>
-          <div class="col-lg-10">
-            <nav class="_menu">
-              <ul class="nav_scroll">
-                <li>
-                  <a style="color: #3dafe5" href="index.html">HOME </a>
-                </li>
-                <li>
-                  <a style="color: #ec881b" href="jumpindoor.html"
-                    >JUMP INDOOR
-                  </a>
-                </li>
-                <li>
-                  <a style="color: #9cc462" href="atividades.html"
-                    >ATIVIDADES</a
-                  >
-                </li>
-                <li>
-                  <a style="color: #eb65a4" href="eventos.html">EVENTOS </a>
-                </li>
-                <li><a style="color: #3dafe5" href="regras.html">REGRAS</a></li>
+    <header class="custom-header">
+      <div class="container-menu">
 
-          
-              </ul>
-            </nav>
-          </div>
+        <div class="logo">
+          <a href="index.html">
+            <img src="assets/images/ImagensJUMP/logo JUMP INDOOR 2.png" width="150">
+          </a>
         </div>
-      </div>
-    </div>
-    <!--  Mobile Menu Area -->
-    <div class="mobile-menu-area d-sm-block d-md-block d-lg-none">
-      <div class="mobile-menu " style="background-color: #121028;">
-        <nav class="_menu">
-          <img class="mt-5"
-          src="assets/images/ImagensJUMP/nova Logo JUMP 2024 - Slogan branco.png "
-          width="160px"
-          alt=""
-        />
-            <ul class="nav_scroll text-center">
-                <li >
-                  <a style="color: #3dafe5;" href="index.html"
-                    >HOME </a>
-                </li>
-                <li>
-                  <a style="color: #ec881b;" href="jumpindoor.html"
-                    >JUMP INDOOR</a>
-                </li>
-                <li><a style="color: #9cc462;" href="atividades.html">ATIVIDADES</a></li>
-                <li>
-                  <a style="color:#eb65a4;"  href="eventos.html"
-                    >EVENTOS 
-                  </a>
-                </li>
-                <li><a style="color: #3dafe5;" href="regras.html">REGRAS</a></li>
 
-               
+        <div class="menu-toggle" onclick="toggleMenu()">
+          ☰
+        </div>
 
-            
-              </ul>
+        <nav class="custom-menu" id="mobileMenu">
+          <ul>
+            <li><a href="index.html" id="home">HOME</a></li>
+            <li><a href="jumpindoor.html" id="jump">JUMP INDOOR</a></li>
+            <li><a href="eventos.html" id="eventos">EVENTOS</a></li>
+            <li><a href="regras.html" id="regras">REGRAS</a></li>
+            <li><a href="https://ingressos.meep.com.br/jump-indoor-gurupi-" id="btn-passaporte">COMPRAR PASSAPORTE</a></li>
+          </ul>
         </nav>
+
       </div>
-    </div>
+    </header>
+
+    <script>
+      function toggleMenu() {
+        document.getElementById("mobileMenu").classList.toggle("active");
+      }
+    </script>
 
     <!--==================================================-->
     <!-- End  slider Area -->
@@ -575,7 +525,6 @@
                     <ul class="menu">
                       <li><a href="index.html">HOME</a></li>
                       <li><a href="jumpindoor.html">JUMP INDOOR</a></li>
-                      <li><a href="atividades.html">ATIVIDADES</a></li>
                       <li><a href="eventos.html">EVENTOS</a></li>
                       <li><a href="regras.html">REGRAS</a></li>
                  
@@ -633,8 +582,7 @@
                 >
                   <div class="footer-bottom-content-copy">
                     <p>
-                      Todos os direitos reservados <img src="assets/images/artesNovosJump/Logo horizontal 02 Jump.webp" width="100px" alt=""><br> Desenvolvido por:
-                      <a href="https://www.ipulseagencia.com.br"><img src="assets/images/logoipulsebranca.webp" width="60px" alt=""></a>.
+                      Todos os direitos reservados <img src="assets/images/artesNovosJump/Logo horizontal 02 Jump.webp" width="100px" alt="">
                     </p>
                   </div>
                 </div>

@@ -66,6 +66,7 @@
     <link rel="stylesheet" href="venobox/venobox.css" type="text/css" media="all" />
     <!-- responsive CSS -->
     <link rel="stylesheet" href="assets/css/responsive.css" type="text/css" media="all" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <!--META PIXEL -->
 
@@ -121,110 +122,53 @@
     <!--==================================================-->
     <!-- Start  Main Menu Area -->
     <!--==================================================-->
-    <div id="sticky-header" class="_nav_manu upper">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-lg-2">
-            <div class="logo p-2 ">
-              <a class="logo_img" href="index.html" title="">
-                <img
-                  src="assets/images/ImagensJUMP/logo JUMP INDOOR 2.png"
-                  width="160px"
-                  alt="logo-jump"
-                />
-              </a>
-              <a class="main_sticky" href="index.html" title="">
-                <img
-                  src="assets/images/ImagensJUMP/logo JUMP INDOOR 2.png"
-                  alt="logo-jump"
-                />
-              </a>
-            </div>
-          </div>
-          <div class="col-lg-10">
-            <nav class="_menu">
-              <ul class="nav_scroll">
-                <li >
-                  <a style="color: #3dafe5;" href="index.html"
-                    >HOME </a>
-                </li>
-                <li>
-                  <a style="color: #ec881b;" href="jumpindoor.html"
-                    >JUMP INDOOR
-                  </a>
-                </li>
-                <li>
-                  <a style="color:#eb65a4;"  href="eventos.html"
-                    >EVENTOS 
-                  </a>
-                </li>
-                <li><a style="color: #3dafe5;" href="regras.html">REGRAS</a></li>
+  <header class="custom-header">
+    <div class="container-menu">
 
-          
-              </ul>
-            </nav>
-          </div>
-        </div>
+      <div class="logo">
+        <a href="index.html">
+          <img src="assets/images/ImagensJUMP/logo JUMP INDOOR 2.png" width="150">
+        </a>
       </div>
+
+      <div class="menu-toggle" onclick="toggleMenu()">
+        ☰
+      </div>
+
+      <nav class="custom-menu" id="mobileMenu">
+        <ul>
+          <li><a href="index.html" id="home">HOME</a></li>
+          <li><a href="jumpindoor.html" id="jump">JUMP INDOOR</a></li>
+          <li><a href="eventos.html" id="eventos">EVENTOS</a></li>
+          <li><a href="regras.html" id="regras">REGRAS</a></li>
+          <li><a href="https://ingressos.meep.com.br/jump-indoor-gurupi-" id="btn-passaporte">COMPRAR PASSAPORTE</a></li>
+        </ul>
+      </nav>
+
     </div>
+  </header>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("mobileMenu").classList.toggle("active");
+    }
+    </script>
+
     <!--  Mobile Menu Area -->
-    <div class="mobile-menu-area d-sm-block d-md-block d-lg-none">
-      <div class="mobile-menu " style="background-color: #121028;">
-        <nav class="_menu">
-          <img class="mt-5" src="assets/images/ImagensJUMP/logo JUMP INDOOR 2.png" width="160px" alt=""/>
-            <ul class="nav_scroll text-center">
-                <li >
-                  <a style="color: #3dafe5;" href="index.html"
-                    >HOME </a>
-                </li>
-                <li>
-                  <a style="color: #ec881b;" href="jumpindoor.html"
-                    >JUMP INDOOR</a>
-                </li>
-                <li>
-                  <a style="color:#eb65a4;"  href="eventos.html"
-                    >EVENTOS 
-                  </a>
-                </li>
-                <li><a style="color: #3dafe5;" href="regras.html">REGRAS</a></li>
-
-               
-
-               
-              </ul>
-        </nav>
-      </div>
-    </div>
+    
     <!--==================================================-->
     <!-- End  Main Menu Area -->
     <!--==================================================-->
 
-    <!-- ===============//banner section start here \\================= -->
-
-    <div class="swiper-container " style="background-color: #121028;">
-       
-      <div class="swiper-wrapper">
-          
+    <section class="hero-banner">
+      <picture>
+        <source media="(max-width: 1024px)" 
+          srcset="assets/images/artesNovosJump/banner-site-novo-mobile.jpg">
         
-          <div class="swiper-slide " style="padding: 0.2rem;">
-            <!-- Imagem para desktop -->
-            <img src="assets/images/artesNovosJump/banner-site-jump(novo).jpg" class="d-none d-lg-block" width="100%" alt="banner-capa">
-            
-            <!-- Imagem para dispositivos móveis -->
-            <img src="assets/images/artesNovosJump/banner-site-novo-mobile.jpg" class="d-lg-none" width="100%" alt="banner-capa-mobile">
-        
-        
-        
-          </div>
-  
-  
-  
-        
-      
-      
-      </div>
- 
-      </div>
+        <img src="assets/images/artesNovosJump/banner-site-jump(novo).jpg"
+          alt="Jump Indoor Park">
+      </picture>
+    </section>
       <!-- Adicione a paginacao do Swiper -->
 
  
@@ -242,14 +186,26 @@
         
     </section>
      --> 
+
+    <!--SCRIPT DAS ANIMAÇÕES GERAIS-->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+          duration: 1000,
+          once: false,
+          offset: 100,
+          easing: 'ease-in-out'
+        });
+    </script>
+
     <!-- ======================   NOSSAS ATRAÇÕES ================ -->
     <section class="atracoes-section">
         <div class="box-titulo">
             NOSSAS ATRAÇÕES
         </div>
 
-        <div class="carrossel">
-            <div class="item" data-nome="GUERRA DE COTONETES">
+        <div class="carrossel" data-aos="fade-up">
+            <div class="item" data-nome="GUERRA DE COTONETES" >
                 <img src="assets/icones/icon-1.png">
             </div>
 
@@ -279,7 +235,7 @@
 
         </div>
 
-        <h1 class="titulo-atracao"></h1>
+        <h1 class="titulo-atracao" data-aos="zoom-in"></h1>
     </section>
 
   <script>
@@ -368,8 +324,8 @@
 
   <!-- =================== SESSÃO UNIDADES ==================-->
   <section class="unidades-section">
-    <h2 class="titulo-unidades">UNIDADES</h2>
-      <p id="descricao-unidade">Unidades do JUMP INDOOR mais próximas de você!</p>
+    <h2 class="titulo-unidades" data-aos="fade-up">UNIDADES</h2>
+      <p id="descricao-unidade" data-aos="fade-up" data-aos-delay="200">Unidades do JUMP INDOOR mais próximas de você!</p>
 
       <div class="unidades-grid">
 
@@ -445,8 +401,8 @@
 
       <div class="info-dir-meia">
         <p>
-            Adquira as nossas por apenas <strong>R$20,00</strong> para utilizar sempre que quiser.
-            Se você já tem algum modelo de meias, é possível que ele possa ser utilizado na Vila Trampolim. Apesar disso, é preciso estar ciente de que nem todas as meias são adequadas para nossos brinquedos.
+            Adquira as nossas para utilizar sempre que quiser.
+            Se você já tem algum modelo de meias, é possível que elas possam ser utilizadas no <strong>JUMP INDOOR</strong>. Apesar disso, é preciso estar ciente de que nem todas as meias são adequadas para nossos brinquedos.
         </p>
       </div>
 
@@ -704,9 +660,9 @@
                     <ul class="menu">
                       <li><a href="index.html">HOME</a></li>
                       <li><a href="jumpindoor.html">JUMP INDOOR</a></li>
-                      <li><a href="atividades.html">ATIVIDADES</a></li>
                       <li><a href="eventos.html">EVENTOS</a></li>
                       <li><a href="regras.html">REGRAS</a></li>
+                      
                 
                  
                     </ul>
@@ -931,6 +887,12 @@
           speed: 2800, // Ajuste o valor de speed conforme necessário
         });
       }, false);
+    </script>
+
+    <script>
+      document.querySelector('.menu-toggle').addEventListener('click', function() {
+        document.querySelector('nav._menu').classList.toggle('active');
+      });
     </script>
  
     <!--==================================================-->

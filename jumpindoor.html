@@ -78,82 +78,46 @@
 </script>
 
 <body>
-  <!--==================================================-->
-  <!-- Start  Main Menu Area -->
-  <!--==================================================-->
-  <div id="sticky-header" class="_nav_manu upper">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-2">
-          <div class="logo p-2">
-            <a class="logo_img" href="index.html" title="">
-              <img src="assets/images/ImagensJUMP/nova Logo JUMP 2024 - Slogan branco.png " width="160px" alt="" />
-            </a>
-            <a class="main_sticky" href="index.html" title="">
-              <img src="assets/images/ImagensJUMP/nova Logo JUMP 2024 - Slogan branco.png " alt="" />
-            </a>
-          </div>
-        </div>
-        <div class="col-lg-10">
-          <nav class="_menu">
-            <ul class="nav_scroll">
-              <li>
-                <a style="color: #3dafe5" href="index.html">HOME </a>
-              </li>
-              <li>
-                <a style="color: #ec881b" href="jumpindoor.html">JUMP INDOOR
-                </a>
-              </li>
-              <li>
-                <a style="color: #9cc462" href="atividades.html">ATIVIDADES</a>
-              </li>
-              <li>
-                <a style="color: #eb65a4" href="eventos.html">EVENTOS </a>
-              </li>
-              <li><a style="color: #3dafe5" href="regras.html">REGRAS</a></li>
+    <!--==================================================-->
+    <!-- Start  Main Menu Area -->
+    <!--==================================================-->
+  <header class="custom-header">
+    <div class="container-menu">
 
-              <li>
-      
-              </li>
-            </ul>
-          </nav>
-        </div>
+      <div class="logo">
+        <a href="index.html">
+          <img src="assets/images/ImagensJUMP/logo JUMP INDOOR 2.png" width="150">
+        </a>
       </div>
-    </div>
-  </div>
-  <!--  Mobile Menu Area -->
-  <div class="mobile-menu-area d-sm-block d-md-block d-lg-none">
-    <div class="mobile-menu " style="background-color: #121028;">
-      <nav class="_menu">
-        <img class="mt-5" src="assets/images/ImagensJUMP/nova Logo JUMP 2024 - Slogan branco.png " width="160px"
-          alt="" />
-        <ul class="nav_scroll text-center">
-          <li>
-            <a style="color: #3dafe5;" href="index.html">HOME </a>
-          </li>
-          <li>
-            <a style="color: #ec881b;" href="jumpindoor.html">JUMP INDOOR</a>
-          </li>
-          <li><a style="color: #9cc462;" href="atividades.html">ATIVIDADES</a></li>
-          <li>
-            <a style="color:#eb65a4;" href="eventos.html">EVENTOS
-            </a>
-          </li>
-          <li><a style="color: #3dafe5;" href="regras.html">REGRAS</a></li>
 
+      <div class="menu-toggle" onclick="toggleMenu()">
+        ☰
+      </div>
 
-
-       
+      <nav class="custom-menu" id="mobileMenu">
+        <ul>
+          <li><a href="index.html" id="home">HOME</a></li>
+          <li><a href="jumpindoor.html" id="jump">JUMP INDOOR</a></li>
+          <li><a href="eventos.html" id="eventos">EVENTOS</a></li>
+          <li><a href="regras.html" id="regras">REGRAS</a></li>
+          <li><a href="https://ingressos.meep.com.br/jump-indoor-gurupi-" id="btn-passaporte">COMPRAR PASSAPORTE</a></li>
         </ul>
       </nav>
+
     </div>
-  </div>
+  </header>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("mobileMenu").classList.toggle("active");
+    }
+    </script>
   <!--==================================================-->
   <!-- End  Main Menu Area -->
   <!--==================================================-->
 
   <!-- ===============//banner section start here \\================= -->
-  <section id="home" class="banner-section light-version" style="background-color: #121028;">
+  <section id="home" class="banner-section light-version" style="background-color: #12082e">
     <div class="container">
       <div class="banner-wrapper">
         <div class="row align-items-center g-5">
@@ -253,195 +217,7 @@
   </section>
   <!-- ===============//banner section end here \\================= -->
 
-  <!--==================================================-->
-  <!-- Start  auctions Area -->
-  <!--==================================================-->
-  <div class="auctions-area pt-80 pb-70" id="auction">
-    <div class="container d-flex justify-content-center align-items-center">
-      <div class="cards-MVV ">
 
-        <div class="col-lg-4 col-md-6 col-sm-12">
-          <img class="m-2" src="assets/images/artesNovosJump/Carrossel---Missão,-visão-e-valores_02.webp" width="350px"
-            alt="" />
-        </div>
-        <div class="col-lg-4 col-md-6 col-sm-12">
-          <img class="m-2" src="assets/images/artesNovosJump/Carrossel---Missão,-visão-e-valores_03.webp" width="350px"
-            alt="" />
-        </div>
-        <div class="col-lg-4 col-md-6 col-sm-12">
-          <img class="m-2" src="assets/images/artesNovosJump/Carrossel---Missão,-visão-e-valores_04.webp" width="350px"
-            alt="" />
-        </div>
-      </div>
-    </div>
-  </div>
-  <!--==================================================-->
-  <!-- End  auctions Area -->
-  <!--==================================================-->
-
-  <!--==================================================-->
-  <!-- Start  creative seller Area -->
-  <!--==================================================-->
-
-  <!--==================================================-->
-  <!-- End  creative seller Area -->
-  <!--==================================================-->
-
-  <!--==================================================-->
-  <!-- Start  item section Area -->
-  <!--==================================================-->
-  <div class="new-item-section pt-35 pb-85" id="explore" style="background-color: #121028;">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-3 col-md-6 col-sm-12">
-          <div class="instagram-embed">
-            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DE4839VOhHk/"
-              data-instgrm-version="14"></blockquote>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-12">
-          <div class="instagram-embed">
-            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DExfk_Gpddo/"
-              data-instgrm-version="14"></blockquote>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-12">
-          <div class="instagram-embed">
-            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DEplxVtpBKO/"
-              data-instgrm-version="14"></blockquote>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-12">
-          <div class="instagram-embed">
-            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DEkqVK_paBC/"
-              data-instgrm-version="14"></blockquote>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-12">
-          <div class="instagram-embed">
-            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DEZ9L1BuLy6/"
-              data-instgrm-version="14"></blockquote>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-12">
-          <div class="instagram-embed">
-            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DEKnltpxGf4/"
-              data-instgrm-version="14"></blockquote>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-12">
-          <div class="instagram-embed">
-            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DEFdtrhpqzI/"
-              data-instgrm-version="14"></blockquote>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-12">
-          <div class="instagram-embed">
-            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DDcmb_pJfrT/"
-              data-instgrm-version="14"></blockquote>
-          </div>
-        </div>
-        <div class="item-button text-center wow fadeInUp" data-wow-delay="1.4s">
-          <a class="pulsar-btn" href="https://www.instagram.com/Jump Indoor.park/">SIGA NO INSTAGRAM<i
-              class="fas fa-sync-alt"></i></a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!--==================================================-->
-  <div class="auctions-area pt-50 pb-50">
-    <div class="container">
-      <div class="row">
-        <!-- <div class="col-lg-12 col-md-6 col-sm-12 text-center">
-            <div
-              class="dreamit-section-title wow fadeInLeft"
-              data-wow-delay=".5s"
-            >
-              <h1 style="color: rgb(255, 255, 255)">UNIDADES</h1>
-            </div>
-          </div> -->
-        <div class="col-lg-6 col-md-6 col-sm-12">
-          <!-- <div
-            class="explore-button auction wow fadeInRight"
-            data-wow-delay=".5s text-right"
-          >
-             <a href="auction.html"
-              >Explore More <i class="flaticon-right-arrow"></i
-            ></a> 
-          </div> -->
-        </div>
-      </div>
-      <div class="row p-2 " style="display: flex; justify-content: center; align-items:center;">
-
-        <div class="col-lg-4">
-          <div class="nft-slider-wrapper wow fadeInUp" data-wow-delay=".7s">
-            <div class="banner-item-slider">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                  <div class="nft-item light-version">
-                    <div class="nft-inner">
-                      <!-- nft-bottom part -->
-                      <div class="nft-item-bottom">
-                        <div class="nft-thumb">
-                          <img src="assets/images/ImagensJUMP/1.webp" alt="nft-img" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="nft-item light-version">
-                    <div class="nft-inner">
-                      <!-- nft-bottom part -->
-                      <div class="nft-item-bottom">
-                        <div class="nft-thumb">
-                          <img src="assets/images/artesNovosJump/Criativos-site-mobile-JUMPMarabá.webp" alt="nft-img" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="nft-slider-wrapper wow fadeInUp" data-wow-delay=".7s">
-            <div class="banner-item-slider">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                  <div class="nft-item light-version">
-                    <div class="nft-inner">
-                      <!-- nft-bottom part -->
-                      <div class="nft-item-bottom">
-                        <div class="nft-thumb">
-                          <img src="assets/images/ImagensJUMP/1.webp" alt="nft-img" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="nft-item light-version">
-                    <div class="nft-inner">
-                      <!-- nft-bottom part -->
-                      <div class="nft-item-bottom">
-                        <div class="nft-thumb">
-                          <img src="assets/images/ImagensJUMP/Criativos-site-mobile-JUMPGurupi.png" alt="nft-img" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-  <!--==================================================-->
 
   <div class="footer-middle pt-80 pb-3">
     <div class="container">
@@ -450,7 +226,7 @@
           <div class="widgets-company-info pt-3 wow fadeInLeft" data-wow-delay=".4s">
             <div class="-logo">
               <a class="logo_img" href="index.html" title="">
-                <img src="assets/images/ImagensJUMP/nova Logo JUMP 2024 - Slogan branco.png" width="200px" alt="" />
+                <img src="assets/images/ImagensJUMP/logo JUMP INDOOR 2.png" width="200px" alt="" />
               </a>
             </div>
             <div class="company-info-desc">
@@ -480,7 +256,6 @@
                   <ul class="menu">
                     <li><a href="index.html">HOME</a></li>
                     <li><a href="jumpindoor.html">JUMP INDOOR</a></li>
-                    <li><a href="atividades.html">ATIVIDADES</a></li>
                     <li><a href="eventos.html">EVENTOS</a></li>
                     <li><a href="regras.html">REGRAS</a></li>
             
@@ -496,6 +271,7 @@
 
                     <li><a href="https://maps.app.goo.gl/ob15w7ch4b1HXPWPA">MARABÁ</a></li>
                     <li><a href="https://maps.app.goo.gl/kPdZVHaVLtqShN3n8">GURUPI </a></li>
+                    <li><a href="https://maps.app.goo.gl/CD7E62fd7Pd63Y1BA">APARECIDA DE GOIÂNIA </a></li>
 
 
                   </ul>
@@ -530,10 +306,7 @@
           <div class="footer-bottom-content wow fadeInLeft" data-wow-delay=".9s">
             <div class="footer-bottom-content-copy">
               <p>
-                Todos os direitos reservados <img src="/assets/images/artesNovosJump/Logo horizontal 02 Jump.webp"
-                  width="100px" alt=""><br> Desenvolvido por:
-                <a href="https://www.ipulseagencia.com.br"><img src="/assets/images/logoipulsebranca.webp" width="60px"
-                    alt=""></a>.
+                Todos os direitos reservados <img src="assets/images/artesNovosJump/Logo horizontal 02 Jump.webp" width="100px" alt="">
               </p>
             </div>
           </div>
@@ -600,73 +373,7 @@
   <!-- Start scroll Area -->
   <!--==================================================-->
   <!-- Modal Passaporte-->
-  <div id="myModalPassaporte" class="modalPassaporte">
-    <div class="modalHeader ">
-      <button class="closeBtn" onclick="closeModal()">X</button>
-    </div>
-    <h4 class="text-center">ESCOLHA A UNIDADE:</h4>
-    <div class="modalContent d-flex justify-content-center align-items-center flex-column mt-30 ">
 
-      <a class="modalBtnCidade" href="https://jumpindoor.tikt.com.br/compra_ingresso_online_new/?filial=001">MARABÁ</a>
-      <a class="modalBtnCidade" href="https://jumpindoor.tikt.com.br/compra_ingresso_online_new/?filial=002">GURUPI</a>
-    <a class="modalBtnCidade" href="https://jumpindoor.tikt.com.br/compra_ingresso_online_new/?filial=003">APARECIDA DE GOIANIA</a>
-    </div>
-  </div>
-
-  <!--==================================================-->
-  <div class="floating-buttons">
-    <button class="comprar pulsar-btn openModalBtn">PASSAPORTE</button>
-    <a class="whatsapp d-flex justify-content-center align-items-center" id="openChatbotBtn">
-      <i class="fas fa-robot"></i>
-    </a>
-  </div>
-
-
-  <!-- Chatbot Container -->
-  <div id="chatbot-container" class="chatbot-hidden">
-    <div class="chat-header">
-      <div class="header-content">
-        <div class="bot-avatar"><i class="fas fa-robot"></i></div>
-        <div class="header-info">
-          <h3>Jump Assistente</h3>
-          <div class="status-indicator">
-            <div class="status-dot"></div><span>Online</span>
-          </div>
-        </div>
-      </div>
-      <button id="closeChatbotBtn" class="close-btn">
-        <svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
-      </button>
-    </div>
-
-    <div id="chatbot-box" class="chat-messages">
-      <div class="welcome-message">
-        <div class="bot-message">
-          <p>Olá! Sou o assistente virtual do Jump Indoor Park 😊</p>
-          <p>Como posso ajudar você hoje?</p>
-          <div class="quick-questions">
-            <button class="quick-btn">Preços e pacotes</button>
-            <button class="quick-btn">Localização</button>
-            <button class="quick-btn">Regras de segurança</button>
-            <button class="quick-btn">Festas & Eventos</button>
-            <button class="quick-btn">Promoções</button>
-            <button class="quick-btn">Contato / WhatsApp</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="chat-input">
-      <input type="text" id="chatbot-input" placeholder="Escreva sua mensagem...">
-      <button id="sendChatbotBtn" class="send-btn">
-        <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
-      </button>
-    </div>
-  </div>
-
-
-
-  </div>
   <!--==================================================-->
   <script>
 

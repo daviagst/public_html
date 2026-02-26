@@ -65,6 +65,7 @@ Version: 0.1
 
 
 
+
 ._nav_manu {
     background: transparent;
     position: relative;
@@ -404,11 +405,160 @@ nav._menu ul li:hover i {
   margin: 5px 0 15px;
 }
 
+
+
+
+/* ===== MENU NOVO LIMPO ===== */
+
+.custom-header {
+  width: 100%;
+  background: #12082e;
+  padding: 15px 0;
+  position: relative;
+  z-index: 9999;
+}
+
+.container-menu {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.custom-menu ul {
+    list-style: none;
+    display: flex;
+    align-items: center; /* alinha todos os itens verticalmente */
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.custom-menu ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;           /* necessário para centralizar conteúdo */
+    align-items: center;            /* centraliza verticalmente */
+    justify-content: center;
+    padding: 12px 0;                /* mesma altura que outros links */
+}
+
+
+#home{
+    color: #128ee4;
+    transform: 0.4s ease;
+}
+
+#home:hover{
+    text-shadow: 0px 0px 20px #128ee4;
+}
+
+#jump{
+    color: #f5b437;
+}
+
+#jump:hover{
+    text-shadow: 0px 0px 20px #f5b437;
+}
+
+#eventos{
+    color: #04e824;
+}
+
+#eventos:hover{
+    text-shadow: 0px 0px 20px #04e824;
+}
+
+#regras{
+    color: #db04e8;
+}
+
+#regras:hover{
+    text-shadow: 0px 0px 20px #db04e8;
+}
+
+
+
+#btn-passaporte {
+    padding: 12px 24px;             /* altura igual aos outros, largura maior */
+    border-radius: 3rem;
+    background: linear-gradient(90deg,#760ce6, #e613fd);
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform 0.3s ease;
+    transition-duration: 0.6s;
+}
+
+#btn-passaporte:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 0px 10px #ec3dff8c;
+    cursor: pointer;
+}
+
+
+
+.custom-menu ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+}
+
+/* MOBILE */
+
+@media (max-width: 991px) {
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .custom-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #12082e;
+    padding: 20px 0;
+  }
+
+  .custom-menu ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .custom-menu.active {
+    display: block;
+  }
+
+}
+
 /* Imagem JUMP INDOOR (abaixo do texto) */
 .logo-jump {
   width: 260px; /* ajuste como quiser */
   height: auto;
   display: block;
+}
+
+/* ===== BANNER PRINCIPAL ===== */
+.hero-banner {
+    width: 100%;
+}
+
+.hero-banner img {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 /* Imagem grande do banner */
@@ -799,19 +949,12 @@ a.nft-like i {
     padding: 48px 60px;
     display: inline-block;
     position: relative;
+    z-index: 0; /* garante que fique acima */
 
     box-shadow: 0 0 30px rgba(255, 0, 157, 1);
 }
 
-.box-titulo::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border: 2px solid #93f606; /* AGORA É BORDA, NÃO FUNDO */
-    background: transparent;
-    z-index: -1;
-    transform: rotate(-4deg) translate(-8px, -8px);
-}
+
 
 .carrossel {
     position: relative;
@@ -6397,7 +6540,7 @@ label {
 }
 /*-- ===============//sign in section start here \\=================*/
 .wallet-section {
-    background: #120F28;
+    background: #12082e;
 }
 .dreamit-wallet-thumb img {
     border-radius: 10px;
