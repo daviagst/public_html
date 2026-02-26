@@ -778,7 +778,7 @@ a.nft-like i {
 .atracoes-section { 
     margin-top: 0;
     border-top: none;
-    background-color: #121028;
+    background: #12082e;
     width: 100%; 
     padding: 80px 0 60px 0; 
     text-align: center; 
@@ -967,12 +967,12 @@ a.nft-like i {
 
 .unidades-section {
     padding: 60px 5%;
-    background-color: #121028;
+    background: #12082e;
 }
 
 .titulo-unidades {
-    background: #ffb400;
-    box-shadow: 0px 0px 30px #ffb400;
+    background: #007eff;
+    box-shadow: 0px 0px 30px #007eff;
     margin: auto;
     width: 500px;
     padding: 10px;
@@ -995,6 +995,7 @@ a.nft-like i {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
+    background: transparent;
 }
 
 .card-unidade {
@@ -1002,7 +1003,7 @@ a.nft-like i {
     border-radius: 18px;
     overflow: hidden;
     border: 2px solid white;
-    background: #121028;
+    background: #12082e;
     transition: 0.6s ease;
 }
 
@@ -1047,7 +1048,6 @@ a.nft-like i {
 }
 
 /* BOTÕES */
-
 
 .btn-primario a{
     text-decoration: none;
@@ -1182,7 +1182,7 @@ a.nft-like i {
 
 .section-meias{
     padding: 90px 60px;
-    background: #121028;
+    background: #12082e;
 }
 
 .meias-grid{
@@ -3783,7 +3783,7 @@ p.nft-text {
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat; */   
-    background-color: #121028;
+    background-color: #12082e;
 }
 /*cimpany information*/
 .company-info-desc p {
