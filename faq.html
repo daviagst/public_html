@@ -107,6 +107,237 @@
       document.getElementById("mobileMenu").classList.toggle("active");
     }
   </script>
+
+  <div class="modal-overlay" id="modalUnidade">
+    <div class="modal-box">
+
+      <button class="modal-close" id="fecharModal">✕</button>
+
+      <h2>
+        SELECIONE A <span>UNIDADE</span>
+      </h2>
+
+      <div class="select-group">
+        <select id="uf" class="custom-select">
+          <option value="">UF</option>
+        </select>
+
+        <select id="cidade" class="custom-select" disabled>
+          <option value="">CIDADE</option>
+        </select>
+
+        <select id="unidade" class="custom-select" disabled>
+          <option value="">UNIDADE</option>
+        </select>
+      </div>
+
+      <button class="btn-acessar" id="acessarUnidade">
+        ACESSAR
+      </button>
+
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+
+      const btn = document.getElementById("btn-passaporte");
+      const modal = document.getElementById("modalUnidade");
+      const fechar = document.getElementById("fecharModal");
+
+      btn.addEventListener("click", function(e){
+        e.preventDefault();
+        modal.style.display = "flex";
+      });
+
+      fechar.addEventListener("click", function(){
+        modal.style.display = "none";
+      });
+
+      modal.addEventListener("click", function(e){
+        if(e.target === modal){
+          modal.style.display = "none";
+        }
+      });
+
+      const dados = {
+        PA: {
+          "MARABÁ": [
+            { nome: "PARTAGE SHOPPING", link: "https://ingressos.meep.com.br/jump-indoor-gurupi-" }
+          ]
+        },
+        TO: {
+          GURUPI: [
+            { nome: "SHOPPING ARAGUAIA", link: "https://ingressos.meep.com.br/jump-indoor-gurupi-" }
+          ]
+        },
+        GO: {
+          "APARECIDA DE GOIÂNIA": [
+            { nome: "APARECIDA SHOPPING", link: "https://ingressos.meep.com.br/jump-indoor-gurupi-" }
+          ]
+        }
+      };
+
+      const ufSelect = document.getElementById("uf");
+      const cidadeSelect = document.getElementById("cidade");
+      const unidadeSelect = document.getElementById("unidade");
+      const acessar = document.getElementById("acessarUnidade");
+
+      // Preenche UF
+      for (let uf in dados) {
+        let option = document.createElement("option");
+        option.value = uf;
+        option.textContent = uf;
+        ufSelect.appendChild(option);
+      }
+
+      // Quando UF muda
+      ufSelect.addEventListener("change", function () {
+
+        cidadeSelect.innerHTML = '<option value="">CIDADE</option>';
+        unidadeSelect.innerHTML = '<option value="">UNIDADE</option>';
+        unidadeSelect.disabled = true;
+
+        if (this.value !== "") {
+
+          cidadeSelect.disabled = false;
+
+          let cidades = dados[this.value];
+
+          for (let cidade in cidades) {
+            let option = document.createElement("option");
+            option.value = cidade;
+            option.textContent = cidade;
+            cidadeSelect.appendChild(option);
+          }
+
+          // Auto seleciona se existir apenas 1 cidade
+          if (Object.keys(cidades).length === 1) {
+            cidadeSelect.selectedIndex = 1;
+            requestAnimationFrame(() => {
+              cidadeSelect.dispatchEvent(new Event("change"));
+            });
+          }
+
+        } else {
+          cidadeSelect.disabled = true;
+        }
+
+      });
+
+      // Quando cidade muda
+      cidadeSelect.addEventListener("change", function () {
+
+        unidadeSelect.innerHTML = '<option value="">UNIDADE</option>';
+
+        if (this.value === "") {
+          unidadeSelect.disabled = true;
+          return;
+        }
+
+        unidadeSelect.disabled = false;
+
+        let unidades = dados[ufSelect.value][this.value];
+
+        unidades.forEach(function (item) {
+          let option = document.createElement("option");
+          option.value = item.link;
+          option.textContent = item.nome;
+          unidadeSelect.appendChild(option);
+        });
+
+        // Auto seleciona se houver apenas 1 unidade
+        if (unidades.length === 1) {
+          unidadeSelect.value = unidades[0].link;
+          requestAnimationFrame(() => {
+            unidadeSelect.dispatchEvent(new Event("change"));
+          });
+        }
+
+      });
+
+      // Botão acessar
+      acessar.addEventListener("click", function () {
+        if (unidadeSelect.value !== "") {
+          window.location.href = unidadeSelect.value;
+        }
+      });
+
+      // Custom select
+      function createCustomSelect(select) {
+
+        const wrapper = document.createElement("div");
+        wrapper.classList.add("select-wrapper");
+
+        const display = document.createElement("div");
+        display.classList.add("select-display");
+
+        const optionsContainer = document.createElement("div");
+        optionsContainer.classList.add("select-options");
+
+        select.parentNode.insertBefore(wrapper, select);
+        wrapper.appendChild(select);
+        wrapper.appendChild(display);
+        wrapper.appendChild(optionsContainer);
+
+        select.style.display = "none";
+
+        function rebuildOptions() {
+          optionsContainer.innerHTML = "";
+
+          Array.from(select.options).forEach(option => {
+
+            const div = document.createElement("div");
+            div.textContent = option.text;
+            div.dataset.value = option.value;
+
+            if (option.value === select.value) {
+              div.style.background = "#ff007f";
+            }
+
+            div.addEventListener("click", () => {
+              select.value = div.dataset.value;
+              display.textContent = option.text;
+              optionsContainer.style.display = "none";
+              select.dispatchEvent(new Event("change"));
+            });
+
+            optionsContainer.appendChild(div);
+          });
+
+          display.textContent = select.options[select.selectedIndex]?.text || "Selecionar";
+        }
+
+        const observer = new MutationObserver(rebuildOptions);
+        observer.observe(select, { childList: true });
+
+        rebuildOptions();
+
+        display.addEventListener("click", () => {
+          if (select.disabled) return;
+          document.querySelectorAll(".select-options").forEach(o => {
+            if (o !== optionsContainer) o.style.display = "none";
+          });
+          optionsContainer.style.display =
+            optionsContainer.style.display === "block" ? "none" : "block";
+        });
+
+        document.addEventListener("click", e => {
+          if (!wrapper.contains(e.target)) {
+            optionsContainer.style.display = "none";
+          }
+        });
+
+        select.addEventListener("change", rebuildOptions);
+      }
+
+      document.querySelectorAll(".custom-select").forEach(select => {
+        createCustomSelect(select);
+      });
+
+    });
+  </script>
+
 <!--==================================================-->
 <!-- End  slider Area -->
 <!--==================================================-->

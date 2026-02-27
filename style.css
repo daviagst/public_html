@@ -550,6 +550,141 @@ nav._menu ul li:hover i {
   display: block;
 }
 
+/* ========= POP-UP COMPRAR PASSAPORTE ========= */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(8px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+}
+
+.modal-box {
+  width: 600px;
+  max-width: 90%;
+  padding: 50px;
+  background: rgba(20, 20, 30, 0.9);
+  border-radius: 12px;
+  position: relative;
+  color: white;
+}
+
+.modal-box h2 {
+  font-size: 42px;
+  font-weight: 300;
+  margin-bottom: 40px;
+}
+
+.modal-box h2 span {
+  font-weight: 800;
+}
+
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.select-group {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+select {
+  padding: 14px;
+  background: transparent;
+  border: 1px solid #555;
+  border-radius: 8px;
+  color: white;
+  font-size: 14px;
+}
+
+.btn-acessar {
+  margin-top: 30px;
+  padding: 14px;
+  width: 200px;
+  border-radius: 8px;
+  border: 1px solid #ff007f;
+  background: transparent;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-acessar:hover {
+  background: #ff007f;
+}
+
+/* ESCONDE SELECT ORIGINAL */
+.custom-select {
+  display: none;
+}
+
+/* CONTAINER */
+.select-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+/* BOTÃO VISÍVEL */
+.select-display {
+  background: #1a1a2e;
+  border: 1px solid #ff007f;
+  padding: 14px;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.select-display:hover {
+  border-color: #ff4db8;
+}
+
+/* DROPDOWN */
+.select-options {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  right: 0;
+  background: #0f0f1a;
+  border: 1px solid #ff007f;
+  border-radius: 8px;
+  overflow: hidden;
+  display: none;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease;
+}
+
+.select-options div {
+  padding: 12px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.select-options div:hover {
+  background: #ff007f;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
 /* ===== BANNER PRINCIPAL ===== */
 .hero-banner {
     width: 100%;
