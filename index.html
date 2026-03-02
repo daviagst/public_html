@@ -209,12 +209,12 @@
       const dados = {
         PA: {
           "MARABÁ": [
-            { nome: "PARTAGE SHOPPING", link: "https://ingressos.meep.com.br/jump-indoor-gurupi-" }
+            { nome: "PARTAGE SHOPPING", link: "https://mepay.meep.cloud/jumpMaraba/ffcc7ecd-d578-6e10-a88c-9aa718e43d41" }
           ]
         },
         TO: {
           GURUPI: [
-            { nome: "SHOPPING ARAGUAIA", link: "https://ingressos.meep.com.br/jump-indoor-gurupi-" }
+            { nome: "SHOPPING ARAGUAIA", link: "https://mepay.meep.cloud/JUMP%20-%20GURUPI/e641cec3-3100-4e6c-dee5-28f71c68529b" }
           ]
         },
         GO: {
@@ -404,20 +404,6 @@
 
  
 
-  
-    <!-- ===============//banner section end here \\================= -->
-     <!--
-    <section class="" style="background-color: #121028; color: rgb(255, 255, 255);">
-      
-
-          <div class="d-flex justify-content-center align-items-center">
-            <button class="comprar pulsar-btn openModalBtn"><a href="https://ingressos.meep.com.br/jump-indoor-gurupi-" id="comprar-passaporte">COMPRAR PASSAPORTE</a></button>
-          </div>
-            
-        
-    </section>
-     --> 
-
     <!--SCRIPT DAS ANIMAÇÕES GERAIS-->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
@@ -572,7 +558,7 @@
                       <p class="localizacao"><i class="fa-solid fa-location-dot"></i> Gurupi / TO</p>
 
                       <div class="botoes">
-                          <button class="btn-primario"><a href="https://ingressos.meep.com.br/jump-indoor-gurupi-">COMPRAR</a></button>
+                          <button class="btn-primario"><a href="https://mepay.meep.cloud/JUMP%20-%20GURUPI/e641cec3-3100-4e6c-dee5-28f71c68529b">COMPRAR</a></button>
                       </div>
                   </div>
               </div>
@@ -585,7 +571,7 @@
                       <p class="localizacao"><i class="fa-solid fa-location-dot"></i> Marabá / PA</p>
 
                       <div class="botoes">
-                          <button class="btn-primario">COMPRAR</button>
+                          <button class="btn-primario"><a href="https://mepay.meep.cloud/jumpMaraba/ffcc7ecd-d578-6e10-a88c-9aa718e43d41">COMPRAR</a></button>
                       </div>
                   </div>
               </div>
@@ -812,39 +798,30 @@
 
     
 
-   <!--    <div class="feature--area style-two " style="background-color: #121028;">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12">
-                    <div class="feature--thumb-box wow fadeInDown" data-wow-delay=".4s">
-                      <img style="border-radius: 1rem 10rem 1rem 10rem;" src="/assets/images/artesNovosJump/Criativos-Site-mobile-2-JUMPFranquias.webp" width="450px" alt="">
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-12">
-                    <div class="dreamit-section-title version3 up1 wow fadeInRight" data-wow-delay=".6s">
-                        <h4>FRANQUIA</h4>
-                        <h1>Transforme Diversão em Oportunidade com Nossa <br> Franquia!</h1>
-                        <div class="nft-shape">
-                            <img src="assets/images/slider/pro1.webp" alt="">
-                        </div>
-                        <p>Nossa franquia oferece não apenas a chance de investir em um setor de entretenimento em crescimento, mas também a oportunidade de fazer parte de uma marca reconhecida por seu compromisso com a diversão segura e saudável.</p>
-                        <div class="em_bar_bg"></div>
-                    </div>
-                    <div class="feature-button wow fadeInUp" data-wow-delay=".7s">
-                        <a href="franquia.html">Seja um Franqueado</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-     -->
-
     <!--==================================================-->
     <div id="fimVideo" style="background: #12082e;">
-        <div class="d-flex justify-content-center align-items-center">
-            <video id="meuVideoFim" src="assets/images/VideosJump/IMG_8142.MOV.webm" width="60%"  controls volume="0.1"></video>
-        </div>
+      <div class="d-flex justify-content-center align-items-center">
+        <video 
+          id="meuVideoFim"
+          src="assets/images/VideosJump/IMG_8142.MOV.webm"
+          width="60%"
+          autoplay
+          muted
+          loop
+          playsinline
+        ></video>
+      </div>
     </div>
+
+    <script>
+      window.addEventListener("load", function() {
+        const video = document.getElementById("meuVideoFim");
+        video.muted = true;
+        video.play();
+      });
+    </script>
+
+
     <!--==================================================-->
     <div class="footer-middle pt-80 pb-3" >
       <div class="container">

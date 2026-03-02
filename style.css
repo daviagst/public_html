@@ -4138,7 +4138,7 @@ p.nft-text {
     z-index: 1;
     padding: 0 0 8px 20px;
     font-weight: 500;
-    background: #3dafe5;
+    background: #128ee4;
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     background-size: 200%, 100%;
@@ -4147,21 +4147,21 @@ p.nft-text {
 }
 
 .menu-quick-link-content ul li:nth-child(2) a {
-    background: #ec881b;
+    background: #f5b437;
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     background-size: 200%, 100%;
     background-position: 100%;
 }
 .menu-quick-link-content ul li:nth-child(3) a {
-    background: #9cc462;
+    background: #04e824;
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     background-size: 200%, 100%;
     background-position: 100%;
 }
 .menu-quick-link-content ul li:nth-child(4) a {
-    background: #eb65a4;
+    background: #db04e8;
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     background-size: 200%, 100%;
@@ -7838,6 +7838,8 @@ div#particles .row.version3 {
   grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: 250px;
   gap: 20px;
+
+  grid-auto-flow: dense;
 }
 
 /* Card base */
@@ -7879,24 +7881,29 @@ div#particles .row.version3 {
 @media (max-width: 1024px) {
   .container-galeria {
     grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: 200px;
+    grid-auto-rows: 220px;
   }
 
+  .vertical,
   .grande {
-    grid-column: span 2;
-  }
-}
-
-@media (max-width: 600px) {
-  .container-galeria {
-    grid-template-columns: 1fr;
+    grid-row: span 1;
   }
 
   .grande,
-  .vertical,
   .grade1 {
-    grid-column: span 1;
-    grid-row: span 1;
+    grid-column: span 2;
+  }
+}
+@media (max-width: 600px) {
+
+  .container-galeria {
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+  }
+
+  .galeria-card {
+    grid-column: span 1 !important;
+    grid-row: span 1 !important;
   }
 }
  
