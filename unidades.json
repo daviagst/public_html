@@ -1,0 +1,29 @@
+{
+  "PA": {
+    "MARABÁ": [
+      {
+        "nome": "PARTAGE SHOPPING",
+        "link": "https://mepay.meep.cloud/jumpMaraba/ffcc7ecd-d578-6e10-a88c-9aa718e43d41",
+        "imagem": "assets/images/artesNovosJump/imagem-unidade-marabái-desktop.jpg"
+      }
+    ]
+  },
+  "TO": {
+    "GURUPI": [
+      {
+        "nome": "SHOPPING ARAGUAIA",
+        "link": "https://mepay.meep.cloud/JUMP%20-%20GURUPI/e641cec3-3100-4e6c-dee5-28f71c68529b",
+        "imagem": "assets/images/artesNovosJump/imagem-unidade-gurupi-desktop.jpg"
+      }
+    ]
+  },
+  "GO": {
+    "APARECIDA DE GOIÂNIA": [
+      {
+        "nome": "APARECIDA SHOPPING",
+        "link": "https://mepay.meep.cloud/jumpAparecida/1550cf56-8c1b-671f-fa7c-597a0447bba1",
+        "imagem": "assets/images/artesNovosJump/imagem-unidade-aparecida-desktop.jpg"
+      }
+    ]
+  }
+}

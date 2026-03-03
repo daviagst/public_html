@@ -159,9 +159,7 @@
 
       <button class="modal-close" id="fecharModal">✕</button>
 
-      <h2>
-        SELECIONE A <span>UNIDADE</span>
-      </h2>
+      <h2>SELECIONE A <span>UNIDADE</span></h2>
 
       <div class="select-group">
         <select id="uf" class="custom-select">
@@ -183,9 +181,12 @@
 
     </div>
   </div>
-
   <script>
     document.addEventListener("DOMContentLoaded", function() {
+
+      /* ===============================
+        CONTROLE DO MODAL
+      =============================== */
 
       const btn = document.getElementById("btn-passaporte");
       const modal = document.getElementById("modalUnidade");
@@ -206,49 +207,50 @@
         }
       });
 
-      const dados = {
-        PA: {
-          "MARABÁ": [
-            { nome: "PARTAGE SHOPPING", link: "https://mepay.meep.cloud/jumpMaraba/ffcc7ecd-d578-6e10-a88c-9aa718e43d41" }
-          ]
-        },
-        TO: {
-          GURUPI: [
-            { nome: "SHOPPING ARAGUAIA", link: "https://mepay.meep.cloud/JUMP%20-%20GURUPI/e641cec3-3100-4e6c-dee5-28f71c68529b" }
-          ]
-        },
-        GO: {
-          "APARECIDA DE GOIÂNIA": [
-            { nome: "APARECIDA SHOPPING", link: "https://ingressos.meep.com.br/jump-indoor-gurupi-" }
-          ]
+      /* ===============================
+        CARREGAR JSON
+      =============================== */
+
+      fetch("unidades.json")
+        .then(response => response.json())
+        .then(dados => {
+          iniciarSistema(dados);
+        })
+        .catch(error => {
+          console.error("Erro ao carregar JSON:", error);
+        });
+
+      /* ===============================
+        SISTEMA DOS SELECTS
+      =============================== */
+
+      function iniciarSistema(dados) {
+
+        const ufSelect = document.getElementById("uf");
+        const cidadeSelect = document.getElementById("cidade");
+        const unidadeSelect = document.getElementById("unidade");
+        const acessar = document.getElementById("acessarUnidade");
+
+        // Preencher UF
+        for (let uf in dados) {
+          let option = document.createElement("option");
+          option.value = uf;
+          option.textContent = uf;
+          ufSelect.appendChild(option);
         }
-      };
 
-      const ufSelect = document.getElementById("uf");
-      const cidadeSelect = document.getElementById("cidade");
-      const unidadeSelect = document.getElementById("unidade");
-      const acessar = document.getElementById("acessarUnidade");
+        // Quando UF muda
+        ufSelect.addEventListener("change", function() {
 
-      // Preenche UF
-      for (let uf in dados) {
-        let option = document.createElement("option");
-        option.value = uf;
-        option.textContent = uf;
-        ufSelect.appendChild(option);
-      }
+          cidadeSelect.innerHTML = '<option value="">CIDADE</option>';
+          unidadeSelect.innerHTML = '<option value="">UNIDADE</option>';
+          cidadeSelect.disabled = true;
+          unidadeSelect.disabled = true;
 
-      // Quando UF muda
-      ufSelect.addEventListener("change", function () {
-
-        cidadeSelect.innerHTML = '<option value="">CIDADE</option>';
-        unidadeSelect.innerHTML = '<option value="">UNIDADE</option>';
-        unidadeSelect.disabled = true;
-
-        if (this.value !== "") {
-
-          cidadeSelect.disabled = false;
+          if (!this.value) return;
 
           let cidades = dados[this.value];
+          cidadeSelect.disabled = false;
 
           for (let cidade in cidades) {
             let option = document.createElement("option");
@@ -257,59 +259,57 @@
             cidadeSelect.appendChild(option);
           }
 
-          // Auto seleciona se existir apenas 1 cidade
+          // Auto seleciona se houver só 1 cidade
           if (Object.keys(cidades).length === 1) {
             cidadeSelect.selectedIndex = 1;
-            requestAnimationFrame(() => {
-              cidadeSelect.dispatchEvent(new Event("change"));
-            });
+            cidadeSelect.dispatchEvent(new Event("change"));
           }
 
-        } else {
-          cidadeSelect.disabled = true;
-        }
-
-      });
-
-      // Quando cidade muda
-      cidadeSelect.addEventListener("change", function () {
-
-        unidadeSelect.innerHTML = '<option value="">UNIDADE</option>';
-
-        if (this.value === "") {
-          unidadeSelect.disabled = true;
-          return;
-        }
-
-        unidadeSelect.disabled = false;
-
-        let unidades = dados[ufSelect.value][this.value];
-
-        unidades.forEach(function (item) {
-          let option = document.createElement("option");
-          option.value = item.link;
-          option.textContent = item.nome;
-          unidadeSelect.appendChild(option);
         });
 
-        // Auto seleciona se houver apenas 1 unidade
-        if (unidades.length === 1) {
-          unidadeSelect.value = unidades[0].link;
-          requestAnimationFrame(() => {
-            unidadeSelect.dispatchEvent(new Event("change"));
+        // Quando cidade muda
+        cidadeSelect.addEventListener("change", function() {
+
+          unidadeSelect.innerHTML = '<option value="">UNIDADE</option>';
+          unidadeSelect.disabled = true;
+
+          if (!this.value) return;
+
+          let unidades = dados[ufSelect.value][this.value];
+          unidadeSelect.disabled = false;
+
+          unidades.forEach(item => {
+            let option = document.createElement("option");
+            option.value = item.link;
+            option.textContent = item.nome;
+            unidadeSelect.appendChild(option);
           });
-        }
 
-      });
+          // Auto seleciona se houver só 1 unidade
+          if (unidades.length === 1) {
+            unidadeSelect.value = unidades[0].link;
+          }
 
-      // Botão acessar
-      acessar.addEventListener("click", function () {
-        if (unidadeSelect.value !== "") {
-          window.location.href = unidadeSelect.value;
-        }
-      });
+        });
 
-      // Custom select
+        // Botão acessar
+        acessar.addEventListener("click", function() {
+          if (unidadeSelect.value) {
+            window.location.href = unidadeSelect.value;
+          }
+        });
+
+        // Criar custom selects depois de tudo pronto
+        document.querySelectorAll(".custom-select").forEach(select => {
+          createCustomSelect(select);
+        });
+
+      }
+
+      /* ===============================
+        CUSTOM SELECT
+      =============================== */
+
       function createCustomSelect(select) {
 
         const wrapper = document.createElement("div");
@@ -329,6 +329,7 @@
         select.style.display = "none";
 
         function rebuildOptions() {
+
           optionsContainer.innerHTML = "";
 
           Array.from(select.options).forEach(option => {
@@ -351,7 +352,8 @@
             optionsContainer.appendChild(div);
           });
 
-          display.textContent = select.options[select.selectedIndex]?.text || "Selecionar";
+          display.textContent =
+            select.options[select.selectedIndex]?.text || "Selecionar";
         }
 
         const observer = new MutationObserver(rebuildOptions);
@@ -361,9 +363,11 @@
 
         display.addEventListener("click", () => {
           if (select.disabled) return;
+
           document.querySelectorAll(".select-options").forEach(o => {
             if (o !== optionsContainer) o.style.display = "none";
           });
+
           optionsContainer.style.display =
             optionsContainer.style.display === "block" ? "none" : "block";
         });
@@ -377,13 +381,8 @@
         select.addEventListener("change", rebuildOptions);
       }
 
-      document.querySelectorAll(".custom-select").forEach(select => {
-        createCustomSelect(select);
-      });
-
     });
   </script>
-
 
     <!--  Mobile Menu Area -->
     
@@ -541,59 +540,12 @@
 
   <!-- =================== SESSÃO UNIDADES ==================-->
   <section class="unidades-section">
-    <h2 class="titulo-unidades" data-aos="fade-up">UNIDADES</h2>
-      <p id="descricao-unidade" data-aos="fade-up" data-aos-delay="200">Unidades do JUMP INDOOR mais próximas de você!</p>
+    <h2 class="titulo-unidades">UNIDADES</h2>
+    <p id="descricao-unidade">
+        Unidades do JUMP INDOOR mais próximas de você!
+    </p>
 
-      <div class="unidades-grid">
-
-        <section class="unidades-section">
-
-          <div class="unidades-grid">
-
-              <div class="card-unidade" data-aos="fade-up" data-aos-delay="220">
-                  <img src="assets/images/artesNovosJump/imagem-unidade-gurupi-desktop.jpg" alt="Imagem-JUMP-INDOOR-GURUPI">
-
-                  <div class="card-info">
-                      <h3>SHOPPING ARAGUAIA</h3>
-                      <p class="localizacao"><i class="fa-solid fa-location-dot"></i> Gurupi / TO</p>
-
-                      <div class="botoes">
-                          <button class="btn-primario"><a href="https://mepay.meep.cloud/JUMP%20-%20GURUPI/e641cec3-3100-4e6c-dee5-28f71c68529b">COMPRAR</a></button>
-                      </div>
-                  </div>
-              </div>
-
-              <div class="card-unidade" data-aos="fade-up" data-aos-delay="240">
-                  <img src="assets/images/artesNovosJump/imagem-unidade-marabái-desktop.jpg" alt="Imagem-JUMP-INDOOR-MARABÁ">
-
-                  <div class="card-info">
-                      <h3>PARTAGE SHOPPING</h3>
-                      <p class="localizacao"><i class="fa-solid fa-location-dot"></i> Marabá / PA</p>
-
-                      <div class="botoes">
-                          <button class="btn-primario"><a href="https://mepay.meep.cloud/jumpMaraba/ffcc7ecd-d578-6e10-a88c-9aa718e43d41">COMPRAR</a></button>
-                      </div>
-                  </div>
-              </div>
-
-              <div class="card-unidade" data-aos="fade-up" data-aos-delay="250">
-                  <img src="assets/images/artesNovosJump/imagem-unidade-aparecida-desktop.jpg" alt="Imagem-JUMP-INDOOR-APARECIDA-DE-GOIÂNIA">
-
-                  <div class="card-info">
-                      <h3>APARECIDA SHOPPING</h3>
-                      <p class="localizacao"><i class="fa-solid fa-location-dot"></i> Aparecida de Goiânia / GO</p>
-
-                      <div class="botoes">
-                          <button class="btn-primario">COMPRAR</button>
-                      </div>
-                  </div>
-              </div>
-
-          </div>
-        </section>
-
-
-      </div>
+    <div class="unidades-grid" id="unidadesContainer"></div>
   </section>
 
 
@@ -1048,6 +1000,7 @@
       }
 
     </script>
+    <script src="script.js"></script>
     <script src="/assets/js/modalPassaporte.js"></script>
     <script async src="//www.instagram.com/embed.js"></script>
     <!-- jquery js -->
