@@ -28,6 +28,11 @@ document.addEventListener("DOMContentLoaded", function() {
                   <p class="localizacao">
                     ${cidade} / ${uf}
                   </p>
+                  <div class="botoes">
+                    <button class="btn-primario">
+                      <a href="${unidade.link}">COMPRAR</a>
+                    </button>
+                  </div>
               </div>
             `;
 
