@@ -1,10 +1,14 @@
 RewriteEngine On
 
-# Remover a extensão .html da URL
+# 1. Forçar a remoção do WWW (Resolve o erro de layout)
+RewriteCond %{HTTP_HOST} ^www\.jumpindoorpark\.com\.br [NC]
+RewriteRule ^(.*)$ https://jumpindoorpark.com.br/$1 [L,R=301]
+
+# 2. Redirecionar URLs que terminam em .html para a versão limpa (SEO)
+RewriteCond %{THE_REQUEST} \s/([^.]+)\.html [NC]
+RewriteRule ^ /%1 [R=301,L]
+
+# 3. Permitir que o servidor encontre o arquivo .html internamente
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}\.html -f
 RewriteRule ^(.*)$ $1.html [L]
-
-# Opcional: Redirecionar URLs com .html para sem .html (para SEO)
-RewriteCond %{THE_REQUEST} \s/([^.]+)\.html [NC]
-RewriteRule ^ /%1 [R=301,L]
